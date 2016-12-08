@@ -316,7 +316,7 @@ export default class Presentation extends React.Component {
             </Appear>
           </Slide>
 
-          <Slide bgColor="primary">
+          <Slide bgColor="tertiary">
             <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
               Thanks!
             </Heading>
