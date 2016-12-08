@@ -1,0 +1,16 @@
+var button = document.getElementById('myButton');
+
+var handleClick = function() {
+	console.log('CLICK');
+	this.doOtherStuff();
+}
+
+button.addEventListener('click', handleClick.bind(this));
+
+
+/* NEW WAY */
+const button = document.getElementById('myButton');
+button.addEventListener('click', () => {
+    console.log('CLICK');
+    this.doOtherStuff(); // lexical `this`
+});

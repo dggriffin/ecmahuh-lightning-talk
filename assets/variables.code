@@ -1,0 +1,5 @@
+var foo = "just a smalltown girl";
+
+let bar = "living in a lonely world";
+
+const baz = "she took the midnight train going anywhere";
