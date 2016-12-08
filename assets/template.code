@@ -1,0 +1,19 @@
+function Person(name, job) {
+	this.name = name;
+	this.job = job;
+}
+
+
+
+
+// OLD
+this.Person.prototype.sayHello = function() {
+	console.log('Hello, my name is ' + this.name +
+	'. I am a ' + this.job + '.');
+}
+
+// NEW
+this.Person.prototype.sayHello = function() {
+	console.log('Hello, my name is ${this.name}.
+	I am a ${job}.');
+}

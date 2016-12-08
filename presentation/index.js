@@ -20,6 +20,10 @@ import {
   Quote,
   Slide,
   Spectacle,
+  Table,
+  TableRow,
+  TableHeaderItem,
+  TableItem,
   Text
 } from "spectacle";
 
@@ -44,7 +48,10 @@ const images = {
   kat: require("../assets/kat.png"),
   logo: require("../assets/formidable-logo.svg"),
   markdown: require("../assets/markdown.png"),
-  calc: require("../assets/TI83plus.png")
+  calc: require("../assets/TI83plus.png"),
+  spongebob: require("../assets/spongebob.jpg"),
+  twitter: require("../assets/twitter.png"),
+  github: require("../assets/github.png")
 };
 
 preloader(images);
@@ -57,9 +64,9 @@ export default class Presentation extends React.Component {
   render() {
     return (
       <Spectacle theme={theme}>
-        <Deck transition={["zoom", "slide"]} transitionDuration={500}>
+        <Deck transition={["fade", "slide", "zoom"]} transitionDuration={500}>
 
-          <Slide transition={["zoom"]} bgColor="primary">
+          <Slide bgColor="primary">
             <Heading size={1} fit caps lineHeight={1} textColor="black">
               ECMAHUH?
             </Heading>
@@ -69,10 +76,18 @@ export default class Presentation extends React.Component {
             <Link href="https://github.com/FormidableLabs/spectacle">
               <Text textSize="1em" margin="10px 0px 0px"caps textColor="tertiary">(Created with Spectacle)</Text>
             </Link>
-            <Text textSize="1.5em" margin="70px 0px 0px" bold>Hit Your Right Arrow To Begin!</Text>
+            <span style={{marginTop: 100, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <Image margin="0" src={images.twitter.replace("/", "")} height="50px"/>
+              <Text margin="0" caps bold>@griffingreyson</Text>
+            </span>
+
+            <span style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+              <Image margin="0" src={images.github.replace("/", "")} height="50px"/>
+              <Text margin="0" caps bold>dggriffin</Text>
+            </span>
           </Slide>
 
-          <Slide align="center center" transition={["slide"]} bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
+          <Slide align="center center" bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
             <Text bold textSize="5em" caps margin="0 0 50px 0"textColor="tertiary">
               FIRST:
             </Text>
@@ -91,33 +106,29 @@ export default class Presentation extends React.Component {
             {/*<Image src={images.kat.replace("/", "")} margin="0px auto 40px" height="293px"/>*/}
           </Slide>
 
-          <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
-            <Appear fid="1">
-              <Heading size={1} caps fit textColor="primary">
-                ECMASCRIPT IS...
-              </Heading>
-            </Appear>
+          <Slide bgColor="primary">
+            <Heading size={1} caps fit textColor="secondary">
+              ECMASCRIPT IS...
+            </Heading>
             <Appear fid="2">
-              <Heading size={4} caps  textColor="tertiary">
+              <Heading size={4} caps textColor="tertiary">
                 the standardized specification of the JavaScript language
               </Heading>
             </Appear>
           </Slide>
 
 
-          <Slide transition={["slide"]}>
-            <Appear fid="1">
-              <Heading size={2} caps textColor="secondary">
-                Maintained by...
-              </Heading>
-            </Appear>
+          <Slide bgColor="tertiary">
+            <Heading size={2} caps textColor="secondary">
+              Maintained by...
+            </Heading>
             <Appear fid="2">
-              <Heading size={1} caps  textColor="tertiary">
+              <Heading size={1} caps textColor="primary">
                 TC39
               </Heading>
             </Appear>
             <Appear>
-              <Heading size={4} caps  textColor="secondary">
+              <Heading size={4} caps textColor="secondary">
                 (not a calculator)
               </Heading>
             </Appear>
@@ -126,7 +137,7 @@ export default class Presentation extends React.Component {
             </Appear>
           </Slide>
 
-          <Slide align="center center" transition={["slide"]} bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
+          <Slide align="center center" bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
             <Text bold textSize="5em" caps margin="0 0 50px 0"textColor="tertiary">
               SECOND:
             </Text>
@@ -145,17 +156,31 @@ export default class Presentation extends React.Component {
             {/*<Image src={images.kat.replace("/", "")} margin="0px auto 40px" height="293px"/>*/}
           </Slide>
 
-          <Slide transition={["slide"]} bgImage={images.city.replace("/", "")} bgDarken={0.75}>
-            <Appear fid="1">
-              <Heading size={1} caps fit textColor="primary">
-                Some ES2015 Features
-              </Heading>
-            </Appear>
+          <Slide bgColor="primary">
+            <Heading size={1} caps fit textColor="secondary">
+              Introducing ES2015
+            </Heading>
             <Appear fid="2">
               <Heading size={4} caps  textColor="tertiary">
                 (Generally known as ES6)
               </Heading>
             </Appear>
+          </Slide>
+
+          <Slide bgColor="tertiary" textColor="primary">
+            <Heading size={1} caps fit textColor="secondary">
+              ES2015 Features
+            </Heading>
+            <List>
+              <Appear><ListItem bold textColor="primary">"let" and "const" variable keywords</ListItem></Appear>
+              <Appear><ListItem bold textColor="primary">Arrow functions</ListItem></Appear>
+              <Appear><ListItem bold textColor="primary">Template literals</ListItem></Appear>
+              <Appear><ListItem bold textColor="primary">Class syntatic sugar</ListItem></Appear>
+              <Appear><ListItem bold textColor="primary">Module Import syntax</ListItem></Appear>
+              <Appear><ListItem bold textColor="primary">Destructuring</ListItem></Appear>
+              <Appear><ListItem bold textColor="primary">Promises</ListItem></Appear>
+              <Appear><ListItem bold textColor="primary">And more...</ListItem></Appear>
+            </List>
           </Slide>
 
           <CodeSlide
@@ -164,10 +189,9 @@ export default class Presentation extends React.Component {
             code={require("raw!../assets/variables.code")}
             ranges={[
               { loc: [0, 270], title: 'new variable keywords: "let" and "const"' },
-              { loc: [0, 1], title: '"var" matey', note: "Function-scoped, can be reassigned" },
-              { loc: [2, 3], title: '"let" there be light', note: "Block-scoped, can be reassigned"},
-              { loc: [4, 5], title: 'I "const" stand changing values', note: "Block-scoped, can't be reassigned" },
-              // ...
+              { loc: [0, 1], note: "Function-scoped, can be reassigned" },
+              { loc: [2, 3], note: "Block-scoped, can be reassigned"},
+              { loc: [4, 5], note: "Block-scoped, can't be reassigned" },
             ]}/>
 
           <CodeSlide
@@ -175,93 +199,142 @@ export default class Presentation extends React.Component {
             lang="jsx"
             code={require("raw!../assets/arrows.code")}
             ranges={[
-              { loc: [0, 270], title: 'a new function syntax: arrow functions' },
-              { loc: [0, 8], title: 'the old way' },
-              { loc: [2, 3], title: '"let" there be light', note: "Block-scoped, can be reassigned"},
-              { loc: [4, 5], title: 'I "const" stand changing values', note: "Block-scoped, can't be reassigned" },
-              // ...
+              { loc: [0, 36], title: 'a new function syntax: arrow functions' },
+              { loc: [0, 4], note: 'using the "function" keyword' },
+              { loc: [7, 11], note: 'using an arrow function'},
+              { loc: [16, 36], title: 'lexical "this"'},
+              { loc: [16, 25], note: 'using the "function" keyword'},
+              { loc: [18, 19], note: 'property set on "this"'},
+              { loc: [21, 24]},
+              { loc: [21, 22], note: '"function" keyword creates new "this"'},
+              { loc: [19, 20], note: 'we must store "this" if we want reference to it within other scopes'},
+              { loc: [22, 23], note: 'since we stored the outer "this" as "me", we have reference to it'},
+              { loc: [28, 36]},
+              { loc: [32, 33], note: 'this time, we are using an arrow function'},
+              { loc: [33, 34], note: 'arrow functions use the same "this" from their immediate surroundings, so we still have access to age '}
             ]}/>
 
-          <Slide transition={["zoom", "fade"]} bgColor="primary" notes="<ul><li>talk about that</li><li>and that</li></ul>">
-            <CodePane
-              lang="jsx"
-              source={require("raw!../assets/deck.example")}
-              margin="20px auto"
-            />
-          </Slide>
+          <CodeSlide
+            transition={["zoom"]}
+            lang="js"
+            code={require("raw!../assets/template.code")}
+            ranges={[
+              { loc: [0, 19], title: 'a new way to express strings: template literals' },
+              { loc: [0, 4], note: 'Let\'s define a Person object that takes "name" and "job" properties' },
+              { loc: [8, 13], note: 'If we wanted to create a dynamic string with these values, it use to look something like this' },
+              { loc: [14, 19], note: 'Now we can use the ${} syntax to make dynamic substitutions more readable.' }
+            ]}/>
 
-
-          <Slide transition={["zoom", "fade"]} bgColor="primary">
-            <Heading caps fit>Flexible Layouts</Heading>
-            <Layout>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Left
-                </Heading>
-              </Fill>
-              <Fill>
-                <Heading size={4} caps textColor="secondary" bgColor="white" margin={10}>
-                  Right
-                </Heading>
-              </Fill>
-            </Layout>
-          </Slide>
-
-          <Slide transition={["slide"]} bgColor="black">
-            <BlockQuote>
-              <Quote>Wonderfully formatted quotes</Quote>
-              <Cite>Ken Wheeler</Cite>
-            </BlockQuote>
-          </Slide>
-
-          <Slide transition={["spin", "zoom"]} bgColor="tertiary">
-            <Heading caps fit size={1} textColor="primary">
-              Inline Markdown
+          <Slide bgColor="primary">
+            <Heading size={1} caps fit textColor="secondary">
+              Now for ES2016!!!
             </Heading>
-            <Markdown>
-              {`
-![Markdown Logo](${images.markdown.replace("/", "")})
-
-You can write inline images, [Markdown Links](http://commonmark.org), paragraph text and most other markdown syntax
-* Lists too!
-* With ~~strikethrough~~ and _italic_
-* And lets not forget **bold**
-              `}
-            </Markdown>
+            <Appear fid="2">
+              <Heading size={4} caps  textColor="tertiary">
+                (Generally known as ES7)
+              </Heading>
+            </Appear>
           </Slide>
 
-          <Slide transition={["slide", "spin"]} bgColor="primary">
-            <Heading caps fit size={1} textColor="tertiary">
-              Smooth
+          <Slide bgColor="tertiary" textColor="primary">
+            <Heading size={1} caps fit textColor="secondary">
+              ES2016 Features
             </Heading>
-            <Heading caps fit size={1} textColor="secondary">
-              Combinable Transitions
-            </Heading>
+            <Appear><Image fit src={images.spongebob.replace("/", "")} margin="50px 0 0 0" height="293px"/></Appear>
           </Slide>
 
-          <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
+          <Slide bgColor="tertiary" textColor="primary">
+            <Heading size={1} caps fit textColor="secondary">
+              But really...
+            </Heading>
             <List>
-              <Appear><ListItem>Inline style based theme system</ListItem></Appear>
-              <Appear><ListItem>Autofit text</ListItem></Appear>
-              <Appear><ListItem>Flexbox layout system</ListItem></Appear>
-              <Appear><ListItem>React-Router navigation</ListItem></Appear>
-              <Appear><ListItem>PDF export</ListItem></Appear>
-              <Appear><ListItem>And...</ListItem></Appear>
+              <Appear><ListItem bold textColor="primary">Exponentiation operator</ListItem></Appear>
+              <Appear><ListItem bold textColor="primary">Array.prototype.Includes()</ListItem></Appear>
             </List>
           </Slide>
 
-          <Slide transition={["slide"]} bgColor="primary">
-            <Heading size={1} caps fit textColor="tertiary">
-              Your presentations are interactive
+          <Slide bgColor="primary">
+            <Heading size={1} caps fit textColor="secondary">
+              And finally ES2017
             </Heading>
-            <Interactive/>
+            <Appear fid="2">
+              <Heading size={4} caps  textColor="tertiary">
+                (Generally known as ES8)
+              </Heading>
+            </Appear>
+          </Slide>
+
+          <Slide bgColor="tertiary" textColor="primary">
+            <Heading size={1} caps fit textColor="secondary">
+              ES2017 Features
+            </Heading>
+            <List>
+              <Appear><ListItem bold caps textColor="primary">Confirmed</ListItem></Appear>
+              <List margin="0 0 0 100px">
+                <Appear><ListItem bold textColor="primary">Async/Await</ListItem></Appear>
+                <Appear><ListItem bold textColor="primary">Object.values/Object.entries</ListItem></Appear>
+                <Appear><ListItem bold textColor="primary">Trailing commas in function param list</ListItem></Appear>
+                <Appear><ListItem bold textColor="primary">String Padding</ListItem></Appear>
+                <Appear><ListItem bold textColor="primary">And more...</ListItem></Appear>
+              </List>
+            </List>
+            <List>
+              <Appear><ListItem bold caps textColor="primary">Potential</ListItem></Appear>
+              <List margin="0 0 0 100px">
+                <Appear><ListItem bold textColor="primary">8+ proposals in Stage 3</ListItem></Appear>
+              </List>
+            </List>
+          </Slide>
+
+          <Slide align="center center" bgColor="black" notes="You can even put notes on your slide. How awesome is that?">
+            <Text bold textSize="5em" caps margin="0 0 50px 0"textColor="tertiary">
+              THIRD:
+            </Text>
+            <Layout>
+              <Fit>
+                <Text bold textSize="5em" margin="0 0 0 95px" caps textColor="primary">
+                  ecma
+                </Text>
+              </Fit>
+              <Fit>
+                <Text bold textSize="5em" caps textColor="white">
+                  how?
+                </Text>
+              </Fit>
+            </Layout>
+            {/*<Image src={images.kat.replace("/", "")} margin="0px auto 40px" height="293px"/>*/}
+          </Slide>
+
+          <Slide bgColor="primary">
+            <Heading size={1} caps fit textColor="secondary">
+              Babeljs
+            </Heading>
+            <Appear fid="2">
+              <Heading margin="35px 0 0 0" size={4} caps  textColor="tertiary">
+                Compiles next-generation JavaScript into browser-safe ES5.
+              </Heading>
+            </Appear>
           </Slide>
 
           <Slide transition={["spin", "slide"]} bgColor="tertiary">
             <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
-              Made with love in Seattle by
+              Useful Links
             </Heading>
-            <Link href="http://www.formidablelabs.com"><Image width="100%" src={images.logo}/></Link>
+            <Link href="https://babeljs.io/">
+              <Text bold textSize="2em" margin="20px 0px 0px"caps textColor="black">BabelJs</Text>
+            </Link>
+            <Link href="https://github.com/tc39/proposals/blob/master/README.md">
+              <Text bold textSize="2em" margin="20px 0px 0px"caps textColor="black">Active TC39 Proposals</Text>
+            </Link>
+            <Link href="https://github.com/tc39/proposals/blob/master/finished-proposals.md">
+              <Text bold textSize="2em" margin="20px 0px 0px"caps textColor="black">Complete TC39 Proposals</Text>
+            </Link>
+            <Link href="https://github.com/FormidableLabs/spectacle">
+              <Text bold textSize="2em" margin="20px 0px 0px"caps textColor="black">Spectacle Slides</Text>
+            </Link>
+            <Link href="https://github.com/thejameskyle/spectacle-code-slide">
+              <Text bold textSize="2em" margin="20px 0px 0px"caps textColor="black">Spectacle Code Slide</Text>
+            </Link>
           </Slide>
 
         </Deck>

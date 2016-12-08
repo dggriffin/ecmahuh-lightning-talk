@@ -1,16 +1,36 @@
-var button = document.getElementById('myButton');
+// OLD
+var x = function() {
+	console.log('hello');
+};
 
-var handleClick = function() {
-	console.log('CLICK');
-	this.doOtherStuff();
+
+
+// NEW
+var x = () => {
+	console.log('hello');
+};
+
+
+
+
+
+//OLD
+function Person() {
+  this.age = 0;
+  var me = this;
+
+  setInterval(function() {
+    me.age++;
+  }, 1000);
 }
 
-button.addEventListener('click', handleClick.bind(this));
 
 
-/* NEW WAY */
-const button = document.getElementById('myButton');
-button.addEventListener('click', () => {
-    console.log('CLICK');
-    this.doOtherStuff(); // lexical `this`
-});
+//NEW
+function Person() {
+  this.age = 0;
+
+  setInterval(() => {
+    this.age++;
+  }, 1000);
+}
