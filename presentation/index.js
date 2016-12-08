@@ -188,7 +188,7 @@ export default class Presentation extends React.Component {
             lang="jsx"
             code={require("raw!../assets/variables.code")}
             ranges={[
-              { loc: [0, 270], title: 'new variable keywords: "let" and "const"' },
+              { loc: [0, 270], title: '"let" and "const"' },
               { loc: [0, 1], note: "Function-scoped, can be reassigned" },
               { loc: [2, 3], note: "Block-scoped, can be reassigned"},
               { loc: [4, 5], note: "Block-scoped, can't be reassigned" },
@@ -199,7 +199,7 @@ export default class Presentation extends React.Component {
             lang="jsx"
             code={require("raw!../assets/arrows.code")}
             ranges={[
-              { loc: [0, 36], title: 'a new function syntax: arrow functions' },
+              { loc: [0, 36], title: 'arrow functions' },
               { loc: [0, 4], note: 'using the "function" keyword' },
               { loc: [7, 11], note: 'using an arrow function'},
               { loc: [16, 36], title: 'lexical "this"'},
@@ -219,7 +219,7 @@ export default class Presentation extends React.Component {
             lang="js"
             code={require("raw!../assets/template.code")}
             ranges={[
-              { loc: [0, 19], title: 'a new way to express strings: template literals' },
+              { loc: [0, 19], title: 'template literals' },
               { loc: [0, 4], note: 'Let\'s define a Person object that takes "name" and "job" properties' },
               { loc: [8, 13], note: 'If we wanted to create a dynamic string with these values, it use to look something like this' },
               { loc: [14, 19], note: 'Now we can use the ${} syntax to make dynamic substitutions more readable.' }
