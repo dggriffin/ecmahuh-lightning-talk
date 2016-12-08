@@ -316,6 +316,12 @@ export default class Presentation extends React.Component {
             </Appear>
           </Slide>
 
+          <Slide bgColor="primary">
+            <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
+              Thanks!
+            </Heading>
+          </Slide>
+
           <Slide transition={["spin", "slide"]} bgColor="tertiary">
             <Heading size={1} caps fit lineHeight={1.5} textColor="primary">
               Useful Links
@@ -331,9 +337,6 @@ export default class Presentation extends React.Component {
             </Link>
             <Link href="https://github.com/FormidableLabs/spectacle">
               <Text bold textSize="2em" margin="20px 0px 0px"caps textColor="black">Spectacle Slides</Text>
-            </Link>
-            <Link href="https://github.com/thejameskyle/spectacle-code-slide">
-              <Text bold textSize="2em" margin="20px 0px 0px"caps textColor="black">Spectacle Code Slide</Text>
             </Link>
           </Slide>
 

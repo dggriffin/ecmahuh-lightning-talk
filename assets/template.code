@@ -13,5 +13,5 @@ this.Person.prototype.sayHello = function() {
 
 // NEW
 this.Person.prototype.sayHello = function() {
-	console.log('Hello, my name is ${this.name}. I am a ${job}.');
+	console.log(`Hello, my name is ${this.name}. I am a ${job}.`);
 }
